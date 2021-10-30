@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="janken_travel.css/style.css">
+  <title>サザエじゃんけん</title>
+    
+</head>
+
+<body>
+<!-- 背景 -->
+
+<div class="video-area">
+  <!-- <video id="video" poster="img/movie.jpg" playsinline muted autoplay loop>
+    <source src="audio/y2mate.com - サザエさんエンディング最期の家に入る所_360p.mp4" type="video/mp4"> -->
+    <video src="audio/y2mate.com - サザエさんエンディング最期の家に入る所_360p.mp4" id="video" loop autoplay muted></video>
+    <p>動画を再生できる環境ではありません。</p>
+    </video>
+    <!--/video-area--></div>
+    
+    
+    
+    
+    <main>
+
+      <div>
+        <div>
+          <audio src="audio/歌詞.mp3" id="audio"></audio>
+        </div>
+          <h1>
+            <span class="a">じ</span>
+            <span class="b">ゃ</span>
+            <span class="c">ん</span>
+            <span class="d">け</span>
+            <span class="e">ん</span>
+            <span class="f">ぽ</span>
+            <span class="g">ん</span>
+          </h1> 
+      </div>
+      
+      <!-- <div class="players"> -->
+       
+          
+        <div class="sazae_img">
+          <!-- <div>
+            <img src="janken_travel.img/サザエぽん！.jpg" id="sazae" alt="サザエさん">
+          </div> -->
+          <div class="fade_img">
+            <img src="janken_travel.img/グー.jpg" id="sazae_gu">
+          </div>
+          <div class="fade_img">
+            <img src="janken_travel.img/チョキ.jpg" id="sazae_cho">
+          </div>
+          <div class="fade_img">
+            <img src="janken_travel.img/パー.jpg" id="sazae_pa">
+          </div>
+        </div>
+        <div class="empty"></div>
+       
+        
+          <!-- じゃんけんボタン -->
+          <div class="command">  
+            <div class="gu_btn">
+                <img src="janken_travel.img/グー.jpg">
+            </div>
+            <div class="cho_btn">
+                <img src="janken_travel.img/チョキ.jpg">
+            </div> 
+            <div class="pa_btn">
+                <img src="janken_travel.img/パー.jpg">
+            </div> 
+          </div>
+<!-- カツオ -->
+         <div class="u"> 
+            <div class="you_img">
+              <img src="janken_travel.img/カツオ.jpeg" id="you" alt="あなた">
+            </div>
+          <!-- スイッチ -->
+            <div>
+              <!-- <div class="switch">
+                <img src="janken_travel.img/OFF2-cutout.png" id="switch_img" alt="OFF">
+              </div>   -->
+             
+                <div class="switch_on">
+                  <img src="janken_travel.img/OFF2-cutout.png" id="switch_img" alt="OFF"><!-- #musicPlay -->
+                </div>
+                <!-- <div class="switch_off">
+                  <img src="janken_travel.img/ON2-cutout.png" alt="ON">#musicPlay
+                </div> -->
+             
+
+            </div>
+        </div>
+            
+      
+          <!-- <div><p id="com_hannd">コンピュータの出した手は？</p></div>
+          <div><p id="my_hand">自分の手は？</p></div> -->
+
+
+       
+        
+        <div>
+          <div><p id="result">結果は？</p></div>
+          <div><p id="winning_per">勝率は？</p></div>
+        </div>
+          
+      
+    </div>
+
+
+
+    <!-- <div class="button_below">
+      <div id="stage_change1" class="stage_change">北海道</div>
+      <div id="stage_change2" class="stage_change">東京</div>
+      <div id="stage_change3" class="stage_change">山口</div>
+      <div id="stage_change4" class="stage_change">福岡</div>   
+      <audio id="right_sigh_sound"></audio>
+      <audio id="some_vioce"></audio>
+    </div> -->
+
+<!-- 
+    <img class="gazo" src="janken_travel.img/カツオ.jpeg" alt=""> -->
+
+
+  </main>
+  <footer>(c)copyrights 2016-2018 Cheeese Academy Fukuoka All RIghts Reserved.</footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="janken.js/main.js"></script> -->
+  
+
+
+  <script>
+
+    //   const timer = document.getElementById("timer");
+    // }
+
+
+    //  タイマー
+  // function updateTimer() {
+  //   const timeLimit = 180 * 1000;
+
+  //   const t = new Date(startTime + timeLimit - Date.now());
+  //   const m = String(t.getMinutes()).padStart(2, '0');
+  //   const m = String(t.getSeconds()).padStart(2, '0');
+  //   const ms = String(t.getMilliSeconds()).padStart(3, '0');
+  //   timer.textContent = "${m}:${s}.${ms}";
+
+  //   timeoutID = setTimeout(() => {
+  //     updateTimer();
+  //   }, 10);
+  // }
+
+    //ここに処理を追加
+    
+
+
+    
+    // スタートボタンを押したら
+  $('.switch_on').click(function(){
+  $('.switch_on').children('img').attr('src',"janken_travel.img/ON2-cutout.png");
+  $('#audio').get(0).play();
+});
+// $('#videoPlay').click(function(){
+// $('#video').get(0).play();
+// });
+    
+    // カウントダウンスタート
+    // 音楽スタート
+
+// じゃんけん（反復）----------------------------------------------------
+
+    let win = 0; 
+    let game_count = 0;    
+
+
+// グーを押した時-------------------------------
+  $(".gu_btn").on("click", function(){
+
+    const min = 0;
+    const max = 2;
+
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min
+
+    game_count = game_count +1;  // let 勝ち数＋
+    if(randomNumber === 0)  { 
+    $("#result").text("勝ち");
+
+
+//local strage で入れようとしたやつ
+
+
+// // データ保存
+//   $("#gu_bun").on("click", function() { //結果を保存
+// // inputの内容をtitle,textに保存する
+//   const result = $("#result").val();
+// // ローカルストレージのmemoに取得した内容を登録、更新する
+//   localStorage.setItem("memo", result);
+
+//   console.log("memo",result);
+//     });
+
+
+    
+
+// グーで勝った時--------------------
+
+// フェードインアウト
+    $('#sazae_cho').addClass('appear');
+    setTimeout(function () {
+      $('#sazae_cho').removeClass('appear');
+    }, 1000);
+  //   $('#sazae_cho').fadeIn("slow", function () {
+  // $(this).fadeOut("slow");
+
+    win = win+1;    //勝ちカウントをする
+    }else if (randomNumber === 1) {
+    $("#result").text("あいこ");
+// あいこの時-----
+    $('#sazae_gu').addClass('appear');
+    setTimeout(function () {
+      $('#sazae_gu').removeClass('appear');
+    }, 1000);
+    
+    }else if (randomNumber === 2) {
+    $("#result").text("負け");
+// 負けの時
+    $('#sazae_pa').addClass('appear');
+    setTimeout(function () {
+      $('#sazae_pa').removeClass('appear');
+    }, 1000);
+    }else{
+      alert("エラー");
+    }
+
+    $("#winning_per").text(Math.floor(win / game_count*100)+"%");    // jquery 勝率
+  });
+
+
+
+
+
+
+
+// チョキ押した時-----------------------------
+  
+$(".cho_btn").on("click", function(){
+    
+    const min = 0;
+    const max = 2;
+    
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    
+    game_count = game_count +1;
+    if(randomNumber === 0)  {
+      $("#result").text("勝ち");
+    
+// チョキで勝った時--------------------
+
+// フェードインアウト
+$('#sazae_pa').addClass('appear');
+    setTimeout(function () {
+      $('#sazae_pa').removeClass('appear');
+    }, 1000);
+
+  //   $('#sazae_pa').fadeIn("slow", function () {
+  // $(this).fadeOut("slow");
+
+      win = win+1;
+    }else if (randomNumber === 1) {
+      $("#result").text("あいこ");
+      $('#sazae_cho').addClass('appear');
+    setTimeout(function () {
+      $('#sazae_cho').removeClass('appear');
+    }, 1000);
+    }else if (randomNumber === 2) {
+      $("#result").text("負け");
+      $('#sazae_pa').addClass('appear');
+    setTimeout(function () {
+      $('#sazae_pa').removeClass('appear');
+    }, 1000);
+    }else{
+      alert("エラー");
+    }
+    $("#winning_per").text(Math.floor(win / game_count*100)+"%");
+  });
+
+
+
+
+
+
+// パー押した時--------------------------
+ 
+$(".pa_btn").on("click", function(){
+    
+    const min = 0;
+    const max = 2;
+    
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    
+    game_count = game_count +1;
+    if(randomNumber === 0)  {
+      $("#result").text("勝ち");
+
+// 勝った時--------------------
+
+// フェードインアウト
+$('#sazae_gu').addClass('appear');
+    setTimeout(function () {
+      $('#sazae_gu').removeClass('appear');
+    }, 1000);
+// $('#sazae_gu').fadeIn("slow", function () {
+//   $(this).fadeOut("slow");
+// });
+
+      win = win+1;
+    }else if (randomNumber === 1) {
+      $("#result").text("あいこ");
+      $('#sazae_pa').addClass('appear');
+    setTimeout(function () {
+      $('#sazae_pa').removeClass('appear');
+    }, 1000);
+    }else if (randomNumber === 2) {
+      $("#result").text("負け");
+      $('#sazae_cho').addClass('appear');
+    setTimeout(function () {
+      $('#sazae_cho').removeClass('appear');
+    }, 1000);
+    }else{
+      alert("エラー");
+    }
+    $("#winning_per").text(Math.floor(win / game_count*100)+"%");
+  });
+
+
+  
+
+
+
+
+
+
+</script>
+
+
+</body>
+
+</html>

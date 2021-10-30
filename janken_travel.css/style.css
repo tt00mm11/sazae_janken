@@ -1,0 +1,229 @@
+/* main*/
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  user-select: none;
+  font-weight: bold;
+}
+
+
+/* 背景 */
+/*header設定*/
+/* #header{ */
+  /* position: relative;h1の中央寄せ配置の起点とするためのrelative */
+  /* height: 100vh;高さを全画面にあわせる */
+/* }  */
+
+.video-area{
+  position: fixed;
+  z-index: -1;/*最背面に設定*/
+  top: 0;
+  right:0;
+  left:0;
+  bottom:0;
+  overflow: hidden;
+}
+
+#video {
+  /*天地中央配置*/
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*縦横幅指定*/
+  width: 177.77777778vh; /* 16:9 の幅→16 ÷ 9＝ 177.77% */
+  height: 56.25vw; /* 16:9の幅 → 9 ÷ 16 = 56.25% */
+  min-height: 100%;
+  min-width: 100%;
+}
+
+/* main */
+  
+h1 .a {
+  color: hsl(0, 80%, 70%);
+}
+h1 .b {
+  color: hsl(40, 80%, 70%);
+}
+h1 .c {
+  color: hsl(80, 80%, 70%);
+}
+h1 .d {
+  color: hsl(120, 80%, 70%);
+}
+h1 .e {
+  color: hsl(160, 80%, 70%);
+}
+h1 .f {
+  color: hsl(180, 80%, 70%);
+}
+h1 .g {
+  color: hsl(200, 80%, 70%);
+}
+
+.audio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-size: auto;
+  color: aliceblue;
+}
+
+h1 {
+  background: #f6f6f7;
+  font-size: 55px;
+  text-align: center;
+}
+
+/* sazae */
+#sazae {
+  display: flex;
+  width: 100%;
+}
+
+.fade_img {
+  position: fixed;
+  top: 25%;
+  right: 9%;
+  transform: translate(-50%, -50%);
+}
+
+#sazae_gu {
+  opacity: 0;
+  transition: opacity .5s;
+}
+#sazae_cho {
+  opacity: 0;
+  transition: opacity .5s;
+}
+#sazae_pa {
+  opacity: 0;
+  transition: opacity .5s;
+}
+
+#sazae_gu.appear {
+  opacity: 1;
+}
+#sazae_cho.appear {
+  opacity: 1;
+}
+#sazae_pa.appear {
+  opacity: 1;
+}
+
+
+
+.sazae_img {
+  position: fixed;
+  top: 13%;
+  right: 63px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 600px;
+  height: 600px;
+  background-image: url(../janken_travel.img/サザエぽん！.jpg);
+  background-size: cover;
+}
+
+
+
+  /* position: absolute;
+  width:550px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%; */
+  
+
+.fade-img img {
+  display: none;
+  position: absolute;
+  flex: auto;
+} 
+
+.empty {
+  width: 100%;
+  height: 800px;
+}
+
+.janken {
+  text-align: center;
+}
+
+
+/* グーチョキーパー */
+.gu_btn img {
+  width: 300px;
+  height: 300px;
+}
+.cho_btn img {
+  width: 300px;
+  height: 300px;
+}
+.pa_btn img {
+  width: 300px;
+  height: 300px;
+}
+
+.command {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* you */
+.u .command {
+  display:flex
+}
+
+.you_img img {
+  margin: auto;
+  height: 700px;
+}
+
+.you_img {
+  text-align: left;
+}
+
+.u, .switch{
+  display: flex;
+  justify-content: space-between;
+}
+
+/* スイッチ */
+.switch_on img{
+  margin: auto;
+  width: 600px;
+  text-align: right;
+}
+.switch_off img{
+  margin: auto;
+  width: 600px;
+  text-align: right;
+}
+
+
+
+
+#result, #winning_per {
+  background: #ffffff;
+  font-size: 50px;
+  text-align: center;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-size: auto;
+  ; */
+}
+
+footer {
+  padding: 10px;
+  background: #323135;
+  color: #98969c;
+  text-align: center;
+}
